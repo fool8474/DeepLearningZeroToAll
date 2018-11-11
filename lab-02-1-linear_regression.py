@@ -2,6 +2,8 @@
 import tensorflow as tf
 tf.set_random_seed(777)  # for reproducibility
 
+# H(x) = Wx + b
+
 # X and Y data
 x_train = [1, 2, 3]
 y_train = [1, 2, 3]
@@ -17,10 +19,13 @@ hypothesis = x_train * W + b
 
 # cost/loss function
 cost = tf.reduce_mean(tf.square(hypothesis - y_train))
+# square > 제곱
+# reduce_mean : [1.,2.,3.,4.] > 2.5
 
 # Minimize
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.001)
 train = optimizer.minimize(cost)
+# GradientDescentOptimizer를 이용해 cost를 최소화시킨다.
 
 # Launch the graph in a session.
 sess = tf.Session()
@@ -28,9 +33,9 @@ sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
 # Fit the line
-for step in range(2001):
+for step in range(50001):
     sess.run(train)
-    if step % 20 == 0:
+    if step % 200 == 0:
         print(step, sess.run(cost), sess.run(W), sess.run(b))
 
 # Learns best fit W:[ 1.],  b:[ 0.]

@@ -13,11 +13,11 @@ W = tf.Variable(5.0)
 hypothesis = X * W
 
 # cost/loss function
-cost = tf.reduce_mean(tf.square(hypothesis - Y))
+cost = tf.reduce_mean(tf.square(hypothesis - Y)) #cost를 구함
 
 # Minimize: Gradient Descent Magic
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1)
-train = optimizer.minimize(cost)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1)  #미분연산을 통해 점점 최소로
+train = optimizer.minimize(cost) #이렇게 간다
 
 # Launch the graph in a session.
 sess = tf.Session()
@@ -27,6 +27,7 @@ sess.run(tf.global_variables_initializer())
 for step in range(100):
     print(step, sess.run(W))
     sess.run(train)
+#5.0에서 1.0까지
 
 '''
 0 5.0

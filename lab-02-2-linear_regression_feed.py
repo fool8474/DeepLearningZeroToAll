@@ -13,7 +13,7 @@ b = tf.Variable(tf.random_normal([1]), name='bias')
 # See http://stackoverflow.com/questions/36693740/
 X = tf.placeholder(tf.float32, shape=[None])
 Y = tf.placeholder(tf.float32, shape=[None])
-
+# 여기서는 placeholder를 사용한다. shape가 None이면 아무 값이나 들어갈 수 있다.
 # Our hypothesis XW+b
 hypothesis = X * W + b
 
@@ -34,6 +34,9 @@ for step in range(2001):
     cost_val, W_val, b_val, _ = \
         sess.run([cost, W, b, train],
                  feed_dict={X: [1, 2, 3], Y: [1, 2, 3]})
+    # placeholder를 사용했으므로 feed_dict를 이용해 넘겨준다.
+    # 각각 실행시키고 그 값들을 변수들에 넣었음.
+
     if step % 20 == 0:
         print(step, cost_val, W_val, b_val)
 
@@ -69,6 +72,7 @@ for step in range(2001):
 print(sess.run(hypothesis, feed_dict={X: [5]}))
 print(sess.run(hypothesis, feed_dict={X: [2.5]}))
 print(sess.run(hypothesis, feed_dict={X: [1.5, 3.5]}))
+# 두개로 보내는것도 가능
 
 '''
 1960 3.32396e-07 [ 1.00037301] [ 1.09865296]

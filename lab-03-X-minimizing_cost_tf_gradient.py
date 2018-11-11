@@ -24,11 +24,12 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
 train = optimizer.minimize(cost)
 
 # Get gradients
-gvs = optimizer.compute_gradients(cost, [W])
+gvs = optimizer.compute_gradients(cost, [W]) # gradient를 계산해줌
 # Optional: modify gradient if necessary
 # gvs = [(tf.clip_by_value(grad, -1., 1.), var) for grad, var in gvs]
 # Apply gradients
-apply_gradients = optimizer.apply_gradients(gvs)
+apply_gradients = optimizer.apply_gradients(gvs) #optimizer에 apply
+# 위의 파일과 같다.
 
 # Launch the graph in a session.
 sess = tf.Session()
@@ -43,6 +44,7 @@ for step in range(100):
 
 '''
 # Apply gradients
+# step, gradient, W, gvs
 0 [37.333332, 5.0, [(37.333336, 5.0)]]
 1 [33.848888, 4.6266665, [(33.848888, 4.6266665)]]
 2 [30.689657, 4.2881775, [(30.689657, 4.2881775)]]

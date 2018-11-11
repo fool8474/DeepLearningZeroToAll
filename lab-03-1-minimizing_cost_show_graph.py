@@ -13,6 +13,7 @@ hypothesis = X * W
 
 # cost/loss function
 cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# 오차제곱평균
 
 # Launch the graph in a session.
 sess = tf.Session()
@@ -26,7 +27,10 @@ for i in range(-30, 50):
     curr_cost = sess.run(cost, feed_dict={W: curr_W})
     W_history.append(curr_W)
     cost_history.append(curr_cost)
+    #list에 W와 cost의 값들을 넣음.
 
 # Show the cost function
 plt.plot(W_history, cost_history)
 plt.show()
+# Linear Regression이기에 포물선으로 그려짐.
+
