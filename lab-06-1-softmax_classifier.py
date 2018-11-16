@@ -1,4 +1,39 @@
 # Lab 6 Softmax Classifier
+
+'''
+WX의 문제 : 3개 이상의 대상을 분별하는것에 적합하지 않았다. (100,200,-10)
+g(z) = 0이나 1사이의 값이 나오면 좋겠다.
+연구시 나온 것이 시그모이드 (1/(1+e^-2)) = Logistic
+이 시그모이드 함수를 이용해 1과 0으로 나누었다.
+H(x) = WX
+> H(x) = g(H(x))
+
+X,W -> z > 시그모이드 -> Y [0,1]
+Y : Real
+YHat : Predict : H(x)
+
+두개를 구분하는 선을 찾아내는 것이 Logistic Regression
+Multinomial Classifcation : 여러개의 Class가 있고 (A,B,C가 점수,출석,시간별로 다르게 분류된다) 이를 분류해내는것
+하나는 C이거나 C가 아니거나를 Check (binary classfiation)
+또 하나는 B이거나 B가 아니거나를 Check (binary classfication)
+또 하나는 A이거나 A가 아니거나를 Check (binary classfication)
+3개의 binary classfication으로 분류가 가능한것인데,
+X - AClassifier - YHat
+  - BClassifier - YHat
+  - CClassifier - YHat
+
+w1x1 + w2x2 + w3x3
+이걸 A, B, C 각각에서 독립적으로 계산한다.
+그래서 이걸 하나로 합쳐,
+WA1 WA2 WA3   X1
+WB1 WB2 WB3 * X2 = [3,1] > YHatA, YHatB, YHatC
+WC1 WC2 WC3   X3
+
+
+
+'''
+
+
 import tensorflow as tf
 tf.set_random_seed(777)  # for reproducibility
 

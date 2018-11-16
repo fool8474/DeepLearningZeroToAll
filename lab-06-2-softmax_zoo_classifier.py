@@ -1,6 +1,37 @@
 # Lab 6 Softmax Classifier
 import tensorflow as tf
 import numpy as np
+
+'''
+Sigmoid?
+2.0, 1.0, 0.1이 y값으로 나왔을때
+0.7, 0.2, 0.1로 만들어준다.
+
+softmax함수는 2.0,1.0,0.1 > 0.7,0.2,0.1로 만들어준다.
+합이 1로 된다. 모든 값은 0 ~ 1 사이
+즉 확률로 된다 라고 보면 된다.
+
+그중에 하나만 골라줘 > one-hot-encoding
+argMax로 사용한다.
+
+cross-entropy
+예측한 값과 실제의 값이 얼마나 차이가 나는지 확인하는 cost Function을 만들자.
+D(S,L) = -sum(Llog(S))
+S = Yhat
+L = Y
+
+Sum(Y * Sum-log(YHati)) 여기서 YHati는 0~1사이이다. softmax를 통과했기 때문
+답 : 0 1
+예측1 : 0 1 > OK > [0,1] * -log[0,1] = [0,1] * [무한,0] > 최종 코스트 : [0,  0] => 0
+예측2 : 1 0 > No > [0,1] * -log[1,0] = [0,1] * [0,무한] > 최종 코스트 : [0,무한] => 무한
+
+Logistic Regression >
+C(H(x),y) = ylog(H(x)) - (1-y)log(1-H(x))
+Cost Function >
+1/N(Sum(D(S(Wx+b),Li)))
+
+'''
+
 tf.set_random_seed(777)  # for reproducibility
 
 # Predicting animal type based on various features
